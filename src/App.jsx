@@ -4,14 +4,15 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import { Todo } from './todo-list-/Todo'
+import { AddAppProvider } from './todo-list-/newContaxt'  // توجه به حروف بزرگ
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
- <div    >
-<Todo/>
- </div>
+    <AddAppProvider>  {/* توجه به حروف بزرگ */}
+      <div>
+        <Todo />
+      </div>
+    </AddAppProvider>
   )
 }
 

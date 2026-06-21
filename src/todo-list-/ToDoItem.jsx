@@ -1,8 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react'
-import { ToDoEditore } from './ToDoEditore'  // اسم دقیق فایل
-import { ToDoDelet } from './ToDoDelet'      // اسم دقیق فایل
+import React, { useState, useRef, useEffect, useContext } from 'react'
+import ToDoEditore from './ToDoEditore'  // بدون {}
+import ToDoDelet from './ToDoDelet'      // بدون {}
+import { NewContaxt } from './newContaxt'
 
-export const TodoItem = ({ todo, toggleTodo, deleteTodo, editTodo }) => {
+export const TodoItem = ({ todo }) => {
+  const { editTodo, toggleTodo, deleteTodo } = useContext(NewContaxt)
   const [isEditing, setIsEditing] = useState(false)
   const [editValue, setEditValue] = useState(todo.name)
   const inputRef = useRef(null)
@@ -57,7 +59,7 @@ export const TodoItem = ({ todo, toggleTodo, deleteTodo, editTodo }) => {
 
       <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
         <ToDoEditore setIsEditing={setIsEditing} />
-        <ToDoDelet deleteTodo={deleteTodo} todo={todo} />
+        <ToDoDelet todoId={todo.id} />
       </div>
     </li>
   )
